@@ -1,9 +1,54 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
+describe "tests materias" {
+  // ESTUDIANTES
+  const alex = new Estudiante()
+  const andy = new Estudiante()
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  // CARRERAS
+  const programación = new Carrera( materias = #{ epyl, mate1, objetos1, objetos2, objetos3, bd, pconc } )
+  const tuess = new Carrera( materias = #{ meya, tys, economia, desarrollo } )
+  const to = new Carrera( materias = #{ lea, cienciasSalud, psicología, antropología, sociología } )
+  
+  // MATERIAS
+  const epyl = new Materia() 
+  const mate1 = new Materia() 
+  const objetos1 = new Materia() 
+  const objetos2 = new Materia() 
+  const objetos3 = new Materia() 
+  const bd = new Materia() 
+  const pconc = new Materia() 
+
+  const meya = new Materia() 
+  const tys = new Materia() 
+  const economia = new Materia() 
+  const desarrollo = new Materia() 
+
+  const lea = new Materia() 
+  const cienciasSalud = new Materia() 
+  const psicología = new Materia() 
+  const antropología = new Materia() 
+  const sociología = new Materia() 
+
+  method initialize(){
+    
   }
 
+  test "Alex e inscripción a carreras" {
+    alex.inscribirseACarrera(programación)
+    alex.inscribirseACarrera(tuess)
+    
+    //assert.equals( #{programación, tuess}, alex.carreras() )
+    assert.that( alex.carreras().contains( programación ) )
+    assert.that( alex.carreras().contains( tuess ) )
+    assert.notThat( alex.carreras().contains( to ) )
+
+    assert.notThat( alex.cursaLaMateria(psicología) )
+
+    assert.throwsException( { alex.inscribirseACarrera(programación)} )
+  }
+
+  test "historia académica" {
+    
+  }
 }
